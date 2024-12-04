@@ -5,5 +5,6 @@ import org.millennium_hardware.dto.Customer;
 public interface CustomerService {
     void saveCustomer(Customer customer);
     void updateCustomerById(Customer customer);
-
+    boolean existsById(Long id);
+    void deleteProductById(Long id);
 }

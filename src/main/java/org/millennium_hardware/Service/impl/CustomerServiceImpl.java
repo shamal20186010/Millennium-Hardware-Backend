@@ -26,4 +26,14 @@ public class CustomerServiceImpl implements CustomerService {
         CustomerEntity customerEntity = mapper.map(customer, CustomerEntity.class);
         customerRepository.save(customerEntity);
     }
+
+    @Override
+    public boolean existsById(Long id) {
+        return customerRepository.existsById(id);
+    }
+
+    @Override
+    public void deleteProductById(Long id) {
+        customerRepository.deleteById(id);
+    }
 }

@@ -3,11 +3,15 @@ package org.millennium_hardware.Controller;
 import lombok.RequiredArgsConstructor;
 import org.millennium_hardware.Service.CustomerService;
 import org.millennium_hardware.dto.Customer;
+import org.millennium_hardware.exception.ProductNotFoundException;
 import org.millennium_hardware.exception.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 @RestController
@@ -41,6 +45,18 @@ public class CustomerController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(e.getMessage(), null));
         }
+    }
+
+    @DeleteMapping("/delete-customer-by-id/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public ResponseEntity<Map<String, String>> deleteProduct(@PathVariable Long id) {
+        if (!customerService.existsById(id)) {
+            throw new ProductNotFoundException("Customer with ID " + id + " not found.");
+        }
+        customerService.deleteProductById(id);
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Customer deleted successfully.");
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
     }
 
 }
