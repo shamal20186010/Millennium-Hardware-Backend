@@ -1,6 +1,9 @@
 package org.millennium_hardware.Service;
 
+import org.millennium_hardware.dto.Customer;
 import org.millennium_hardware.dto.Item;
+
+import java.util.List;
 
 public interface ItemService {
     void saveItem(Item item);
@@ -12,4 +15,6 @@ public interface ItemService {
     void deleteItemById(Long id);
 
     Item findById(Long id);
+
+    List<Item> getItem();
 }

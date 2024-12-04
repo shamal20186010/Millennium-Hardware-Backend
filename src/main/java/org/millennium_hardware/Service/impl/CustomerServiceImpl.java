@@ -47,7 +47,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> getProduct() {
+    public List<Customer> getCustomer() {
         List<Customer> productArrayList = new ArrayList<>();
         customerRepository.findAll().forEach(entity -> {
             Customer product = mapper.map(entity, Customer.class);

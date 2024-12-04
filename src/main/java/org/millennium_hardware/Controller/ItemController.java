@@ -2,6 +2,7 @@ package org.millennium_hardware.Controller;
 
 import lombok.RequiredArgsConstructor;
 import org.millennium_hardware.Service.ItemService;
+import org.millennium_hardware.dto.Customer;
 import org.millennium_hardware.dto.Item;
 import org.millennium_hardware.exception.ProductNotFoundException;
 import org.millennium_hardware.exception.ResponseMessage;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -61,5 +63,11 @@ public class ItemController {
     @GetMapping("/search-by-item/{id}")
     public Item searchByName(@PathVariable Long id) {
         return itemService.findById(id);
+    }
+
+    @GetMapping("/getAll-item")
+    public ResponseEntity<List<Item>> getItem() {
+        List<Item> itemList = itemService.getItem();
+        return ResponseEntity.ok(itemList);
     }
 }

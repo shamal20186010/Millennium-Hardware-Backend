@@ -66,8 +66,8 @@ public class CustomerController {
     }
 
     @GetMapping("/getAll-customer")
-    public ResponseEntity<List<Customer>> getProduct() {
-        List<Customer> productList = customerService.getProduct();
-        return ResponseEntity.ok(productList);
+    public ResponseEntity<List<Customer>> getCustomer() {
+        List<Customer> customerList = customerService.getCustomer();
+        return ResponseEntity.ok(customerList);
     }
 }
