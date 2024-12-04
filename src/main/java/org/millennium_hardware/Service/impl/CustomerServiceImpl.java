@@ -8,6 +8,9 @@ import org.millennium_hardware.entity.CustomerEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
@@ -35,5 +38,10 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void deleteProductById(Long id) {
         customerRepository.deleteById(id);
+    }
+
+    @Override
+    public Customer findById(Long id) {
+      return mapper.map(customerRepository.findById(id), Customer.class);
     }
 }

@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -59,4 +60,8 @@ public class CustomerController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
     }
 
+    @GetMapping("/search-by-customer/{id}")
+    public Customer searchByName(@PathVariable Long id) {
+        return customerService.findById(id);
+    }
 }
