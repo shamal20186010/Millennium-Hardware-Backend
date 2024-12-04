@@ -24,11 +24,21 @@ public class CustomerController {
     public ResponseEntity<?> saveCustomer(@RequestBody Customer customer) {
         try {
             //save Customer
-            customerService.saveProduct(customer);
+            customerService.saveCustomer(customer);
             // Respond with success message
             return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseMessage(null, "User successfully registered"));
         } catch (Exception e) {
             // Handle any errors, such as user already exists
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(e.getMessage(), null));
+        }
+    }
+
+    @PutMapping("/update-customer")
+    public ResponseEntity<?> updateCustomer(@RequestBody Customer customer) {
+        try {
+            customerService.updateCustomerById(customer);
+            return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseMessage(null, "User successfully update"));
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(e.getMessage(), null));
         }
     }

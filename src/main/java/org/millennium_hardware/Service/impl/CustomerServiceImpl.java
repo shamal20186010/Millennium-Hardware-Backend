@@ -16,7 +16,13 @@ public class CustomerServiceImpl implements CustomerService {
     private final ModelMapper mapper;
 
     @Override
-    public void saveProduct(Customer customer) {
+    public void saveCustomer(Customer customer) {
+        CustomerEntity customerEntity = mapper.map(customer, CustomerEntity.class);
+        customerRepository.save(customerEntity);
+    }
+
+    @Override
+    public void updateCustomerById(Customer customer) {
         CustomerEntity customerEntity = mapper.map(customer, CustomerEntity.class);
         customerRepository.save(customerEntity);
     }
