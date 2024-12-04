@@ -2,6 +2,7 @@ package org.millennium_hardware.Controller;
 
 import lombok.RequiredArgsConstructor;
 import org.millennium_hardware.Service.ItemService;
+import org.millennium_hardware.dto.Customer;
 import org.millennium_hardware.dto.Item;
 import org.millennium_hardware.exception.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,16 @@ public class ItemController {
             return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseMessage(null, "Item successfully added"));
         } catch (Exception e) {
             // Handle any errors, such as user already exists
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(e.getMessage(), null));
+        }
+    }
+
+    @PutMapping("/update-item")
+    public ResponseEntity<?> updateCustomer(@RequestBody Item item) {
+        try {
+            itemService.updateItemById(item);
+            return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseMessage(null, "Item successfully update"));
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(e.getMessage(), null));
         }
     }

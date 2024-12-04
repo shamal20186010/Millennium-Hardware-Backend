@@ -22,4 +22,10 @@ public class ItemServiceImpl implements ItemService {
         ItemEntity itemEntity = mapper.map(item, ItemEntity.class);
         itemRepository.save(itemEntity);
     }
+
+    @Override
+    public void updateItemById(Item item) {
+        ItemEntity itemEntity = mapper.map(item, ItemEntity.class);
+        itemRepository.save(itemEntity);
+    }
 }

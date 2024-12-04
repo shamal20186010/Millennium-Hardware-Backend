@@ -5,4 +5,5 @@ import org.millennium_hardware.dto.Item;
 
 public interface ItemService {
     void saveItem(Item item);
+    void updateItemById(Item item);
 }
