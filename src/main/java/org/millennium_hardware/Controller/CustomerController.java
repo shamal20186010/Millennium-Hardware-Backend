@@ -64,4 +64,10 @@ public class CustomerController {
     public Customer searchByName(@PathVariable Long id) {
         return customerService.findById(id);
     }
+
+    @GetMapping("/getAll-customer")
+    public ResponseEntity<List<Customer>> getProduct() {
+        List<Customer> productList = customerService.getProduct();
+        return ResponseEntity.ok(productList);
+    }
 }

@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -42,6 +43,16 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer findById(Long id) {
-      return mapper.map(customerRepository.findById(id), Customer.class);
+        return mapper.map(customerRepository.findById(id), Customer.class);
+    }
+
+    @Override
+    public List<Customer> getProduct() {
+        List<Customer> productArrayList = new ArrayList<>();
+        customerRepository.findAll().forEach(entity -> {
+            Customer product = mapper.map(entity, Customer.class);
+            productArrayList.add(product);
+        });
+        return productArrayList;
     }
 }
