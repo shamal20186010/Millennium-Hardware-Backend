@@ -54,7 +54,7 @@ public class CustomerController {
         if (!customerService.existsById(id)) {
             throw new ProductNotFoundException("Customer with ID " + id + " not found.");
         }
-        customerService.deleteProductById(id);
+        customerService.deleteCustomerById(id);
         Map<String, String> response = new HashMap<>();
         response.put("message", "Customer deleted successfully.");
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);

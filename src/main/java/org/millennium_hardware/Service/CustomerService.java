@@ -11,7 +11,7 @@ public interface CustomerService {
 
     boolean existsById(Long id);
 
-    void deleteProductById(Long id);
+    void deleteCustomerById(Long id);
 
     Customer findById(Long id);
 }

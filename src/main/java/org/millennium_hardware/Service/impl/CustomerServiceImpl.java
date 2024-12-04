@@ -36,7 +36,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void deleteProductById(Long id) {
+    public void deleteCustomerById(Long id) {
         customerRepository.deleteById(id);
     }
 
